@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insurgency Sandstorm Version Downloader</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        select {
+            width: 100%;
+            padding: 8px;
+            font-size: 16px;
+        }
+        
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Insurgency Sandstorm Version Downloader</h1>
+        
+        <label for="versionSelect">Select Version:</label>
+        <select id="versionSelect">
+            <option value="711852640520621954">1.14</option>
+            <option value="3458666526935884805">1.13.Hotfix</option>
+            <option value="8092396578978848794">1.13</option>
+            <option value="5986464693732242887">1.12.Hotfix2</option>
+            <option value="4871146283128373881">1.12.Hotfix1</option>
+            <option value="6829171027828238491">1.12</option>
+            <option value="4533143795067422411">1.11.Hotfix6</option>
+            <option value="4399216738472684023">1.11.Hotfix5</option>
+            <option value="7382926159525707633">1.11.Hotfix4</option>
+            <option value="187196897474210673">1.11.Hotfix3</option>
+            <option value="7439114860999596478">1.11.Hotfix2</option>
+            <option value="8844119457875109523">1.11.Hotfix1</option>
+            <option value="7012079460285536988">1.11</option>
+            <option value="2006881810008027571">1.10.Hotfix6</option>
+            <option value="214177622852644981">1.10.Hotfix5</option>
+            <option value="1045813576702319803">1.10.Hotfix4</option>
+            <option value="7325052389182588217">1.10.Hotfix3</option>
+            <option value="303952586483603080">1.10.Hotfix2.5</option>
+            <option value="2450329360460312166">1.10.Hotfix2</option>
+            <option value="6485000026124667854">1.10.Hotfix1</option>
+            <option value="3243532880257426731">1.10</option>
+            <option value="1088025155821945216">1.9.2.Hotfix2</option>
+            <option value="9086410089138469140">1.9.2.Hotfix1</option>
+            <option value="8334976934954086030">1.9.2</option>
+            <option value="7584863291271290147">1.9.1.Hotfix4</option>
+            <option value="2729083608456298822">1.9.1.Hotfix3</option>
+            <option value="1775289740822761452">1.9.1.Hotfix2.5</option>
+            <option value="4914610732870329398">1.9.1.Hotfix2</option>
+            <option value="6670957732884402247">1.9.1.Hotfix1</option>
+            <option value="5726941608789056878">1.9.1</option>
+            <option value="6463337868987152237">1.9.Hotfix6</option>
+            <option value="2877788480249548103">1.9.Hotfix5</option>
+            <option value="3707872763158257990">1.9.Hotfix4</option>
+            <option value="5903502488140004374">1.9.Hotfix3</option>
+            <option value="9025549973775273709">1.9.Hotfix2</option>
+            <option value="1713003361944811328">1.9.Hotfix1</option>
+            <option value="6264937784337881272">1.9</option>
+            <option value="787582876162366074">1.8.1</option>
+            <option value="4109103438259507398">1.8.Hotfix4</option>
+            <option value="8519301017775042659">1.8.Hotfix3</option>
+            <option value="5536306406543471367">1.8.Hotfix2</option>
+            <option value="9201705553858300830">1.8.Hotfix1</option>
+            <option value="2723660525937518784">1.8</option>
+            <option value="710459789755486682">1.7.1Hotfix2</option>
+            <option value="1133192030284822537">1.7.1.Hotfix1</option>
+            <option value="1978372929896113254">1.7.1</option>
+            <option value="5196214492480799100">1.7.Hotfix5</option>
+            <option value="8551810919919402267">1.7.Hotfix4</option>
+            <option value="6863766911579724490">1.7.Hotfix3</option>
+            <option value="7955879386472886167">1.7.Hotfix2</option>
+            <option value="3012192512914207454">1.7.Hotfix1</option>
+            <option value="454998146682676571">1.7</option>
+            <option value="4266804895388485623">1.6.3</option>
+            <option value="7287445481278679392">1.6.2</option>
+            <option value="2034095608314520563">1.6.1.Hotfix</option>
+            <option value="3921927152262922604">1.6.1</option>
+            <option value="7847845268283935790">1.6.Hotfix2</option>
+            <option value="2761663070421646425">1.6.Hotfix1</option>
+            <option value="6572115972218114923">1.6</option>
+            <option value="852780598066674912">1.5.Hotfix5</option>
+            <option value="2511179348630256170">1.5.Hotfix4</option>
+            <option value="232934329978532664">1.5.Hotfix3</option>
+            <option value="1835978315453844649">1.5.Hotfix2</option>
+            <option value="1648777534570350320">1.5.Hotfix1</option>
+            <option value="7388630325061410720">1.5</option>
+            <option value="2269144251291045229">1.4.2.Hotfix3</option>
+            <option value="124039388153563814">1.4.2.Hotfix1</option>
+            <option value="7516375773592346679">1.4.2.Hotfix</option>
+            <option value="3176769886884186040">1.4.2</option>
+            <option value="7362143051755135924">1.4.1</option>
+            <option value="6181860716510471882">1.4.Hotfix3</option>
+            <option value="2926158819493651599">1.4.Hotfix2</option>
+            <option value="6036042970382503178">1.4.Hotfix1</option>
+            <option value="1323034449099701970">1.4</option>
+            <option value="784569742911593091">1.3.2</option>
+            <option value="1522554223434535602">1.3.Hotfix9</option>
+            <option value="7601179095701261530">1.3.Hotfix8</option>
+            <option value="6713801361500850308">1.3.Hotfix7</option>
+            <option value="506999290891349986">1.3.Hotfix6</option>
+            <option value="7921442344668730597">1.3.Hotfix5</option>
+            <option value="2148521915067304173">1.3.Hotfix4</option>
+            <option value="6308999349504179373">1.3.Hotfix3</option>
+            <option value="8128108979843632926">1.3.Hotfix2</option>
+            <option value="9054620642247097560">1.3.Hotfix1</option>
+            <option value="2331825406693558379">1.3</option>
+            <option value="6403852170718626390">1.2.Hotfix4</option>
+            <option value="7438549529557820477">1.2.Hotfix3</option>
+            <option value="6981138844248411630">1.2.Hotfix2</option>
+            <option value="6416001038180394959">1.2.Hotfix1</option>
+            <option value="7595476231582786872">1.2</option>
+            <option value="7657420739371707334">1.1.4.Hotfix</option>
+            <option value="4177236473352632638">1.1.4</option>
+            <option value="3215773350402364230">1.1.3</option>
+            <option value="6688149793229305402">1.1.2</option>
+            <option value="6705546614430059198">1.1.1</option>
+            <option value="2896223945223913834">1.1.0.1</option>
+            <option value="8732291446976397467">1.1</option>
+            <option value="6685654127200965218">1.0.2</option>
+            <option value="5484915775999956526">1.0.1</option>
+            <option value="5274979863881698948">1.0.0</option>
+            <option value="3351122470364503446">FreeOpenBeta1Hotfix2</option>
+            <option value="6425999330048805122">FreeOpenBeta1Hotfix1</option>
+            <option value="8847845026571887103">FreeOpenBeta1</option>
+            <option value="5546620330035867890">PreFreeOpenBeta?</option>
+        </select>
+        
+        <button onclick="downloadVersion()">Download</button>
+    </div>
+    
+    <script>
+        function downloadVersion() {
+            const versionSelect = document.getElementById('versionSelect');
+            const manifestId = versionSelect.value;
+            
+            const appId = '581320';
+            const depotId = '581322';
+            
+            const steamUrl = `steam://install/${appId}/${depotId}/${manifestId}`;
+            window.location.href = steamUrl;
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
