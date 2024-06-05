@@ -168,8 +168,18 @@
             const appId = '581320';
             const depotId = '581322';
             
-            const steamUrl = `steam://install/${appId}/${depotId}/${manifestId}`;
-            window.location.href = steamUrl;
+            const steamConsoleUrl = `steam://nav/console`;
+            const downloadCommand = `download_depot ${appId} ${depotId} ${manifestId}`;
+            
+            // Open the Steam console
+            window.location.href = steamConsoleUrl;
+            
+            // Copy the download command to the clipboard
+            navigator.clipboard.writeText(downloadCommand).then(function() {
+                alert('The download command has been copied to your clipboard. Please paste it into the Steam console and press Enter to start the download.');
+            }, function() {
+                alert('Failed to copy the download command. Please manually copy the following command and paste it into the Steam console:\n\n' + downloadCommand);
+            });
         }
     </script>
 </body>
