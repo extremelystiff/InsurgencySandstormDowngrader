@@ -43,9 +43,11 @@
         pre {
             background-color: #212529; color: #f8f9fa; padding: 15px; border-radius: 5px;
             white-space: pre-wrap; word-wrap: break-word; font-family: 'Courier New', Courier, monospace;
+            margin-top: 5px; margin-bottom: 10px;
         }
         .step { margin-bottom: 25px; }
         .step p { font-size: 0.9em; color: #6c757d; margin-top: 0; }
+        .command-block { margin-bottom: 20px; }
         
         /* Modal Styles */
         .modal-backdrop {
@@ -213,20 +215,36 @@
             <h2>Method A: Set Up Another Drive Before Downloading</h2>
             <div class="step">
                 <label for="newPath_A">Enter the full path for your new folder</label>
-                <p>Example: <strong>D:\Games\Sandstorm_v1.14</strong></p>
+                <p>This is where the old game version will actually be stored. Example: <strong>D:\Games\Sandstorm_v1.14</strong></p>
                 <input type="text" id="newPath_A" placeholder="e.g., D:\Games\Sandstorm_v1.14" oninput="generateCommands_A()">
             </div>
             <div class="step">
                 <h3>Part 1: BEFORE You Download</h3>
-                <p>You must open the Windows Command Prompt <strong>as an Administrator</strong> and run this command. It redirects Steam's download folder to your other drive.</p>
-                <pre id="generatedCommands_A_Part1">Enter a new path above to generate commands...</pre>
-                <button onclick="copyToClipboard('generatedCommands_A_Part1')">Copy Command</button>
+                <p>You must open the Windows Command Prompt <strong>as an Administrator</strong> and run these commands one by one.</p>
+                <div class="command-block">
+                    <label>Command 1: Create Parent Folder</label>
+                    <pre id="generatedCommands_A_Part1_Cmd1">Enter a new path above...</pre>
+                    <button onclick="copyToClipboard('generatedCommands_A_Part1_Cmd1')">Copy</button>
+                </div>
+                <div class="command-block">
+                    <label>Command 2: Link Download Folder</label>
+                    <pre id="generatedCommands_A_Part1_Cmd2">Enter a new path above...</pre>
+                    <button onclick="copyToClipboard('generatedCommands_A_Part1_Cmd2')">Copy</button>
+                </div>
             </div>
             <div class="step">
                 <h3>Part 2: AFTER You Download</h3>
                 <p>After the download is complete, open the Command Prompt <strong>as an Administrator</strong> again and run these two commands to make the files playable.</p>
-                <pre id="generatedCommands_A_Part2">Enter a new path above to generate commands...</pre>
-                <button onclick="copyToClipboard('generatedCommands_A_Part2')">Copy Commands</button>
+                 <div class="command-block">
+                    <label>Command 1: Rename Live Game</label>
+                    <pre id="generatedCommands_A_Part2_Cmd1">Enter a new path above...</pre>
+                    <button onclick="copyToClipboard('generatedCommands_A_Part2_Cmd1')">Copy</button>
+                </div>
+                <div class="command-block">
+                    <label>Command 2: Create Playable Link</label>
+                    <pre id="generatedCommands_A_Part2_Cmd2">Enter a new path above...</pre>
+                    <button onclick="copyToClipboard('generatedCommands_A_Part2_Cmd2')">Copy</button>
+                </div>
             </div>
         </div>
 
@@ -235,31 +253,53 @@
              <p>Follow this if you have already downloaded to the `.../steamapps/content` folder.</p>
             <div class="step">
                 <h3>Run These Commands</h3>
-                <p>You must open the Windows Command Prompt <strong>as an Administrator</strong> and run these commands to make the old version playable.</p>
-                <pre id="generatedCommands_B">Loading commands...</pre>
-                <button onclick="copyToClipboard('generatedCommands_B')">Copy Commands</button>
+                <p>You must open the Windows Command Prompt <strong>as an Administrator</strong> and run these commands one by one.</p>
+                <div class="command-block">
+                    <label>Command 1: Rename Live Game</label>
+                    <pre id="generatedCommands_B_Cmd1">Loading...</pre>
+                    <button onclick="copyToClipboard('generatedCommands_B_Cmd1')">Copy</button>
+                </div>
+                <div class="command-block">
+                    <label>Command 2: Link Downloaded Files</label>
+                    <pre id="generatedCommands_B_Cmd2">Loading...</pre>
+                    <button onclick="copyToClipboard('generatedCommands_B_Cmd2')">Copy</button>
+                </div>
             </div>
         </div>
 
         <div id="revertArea" class="helper-area">
             <h2>Restore Your Latest Game Version</h2>
-            <p>This will safely undo the changes and make your up-to-date version of Sandstorm playable again.</p>
             <div class="step">
                 <h3>Run These Commands</h3>
-                <p>You must open the Windows Command Prompt <strong>as an Administrator</strong>. This makes your original game active again.</p>
-                <pre id="revertCommands">Loading commands...</pre>
-                <button onclick="copyToClipboard('revertCommands')">Copy Commands</button>
+                <p>You must open the Windows Command Prompt <strong>as an Administrator</strong> to make your original game active again.</p>
+                 <div class="command-block">
+                    <label>Command 1: Deactivate Downgrade Link</label>
+                    <pre id="revertCommands_Cmd1">Loading...</pre>
+                    <button onclick="copyToClipboard('revertCommands_Cmd1')">Copy</button>
+                </div>
+                <div class="command-block">
+                    <label>Command 2: Restore Live Game</label>
+                    <pre id="revertCommands_Cmd2">Loading...</pre>
+                    <button onclick="copyToClipboard('revertCommands_Cmd2')">Copy</button>
+                </div>
             </div>
         </div>
 
         <div id="backForMoreArea" class="helper-area">
             <h2>Back for More? Re-activate the Old Version</h2>
-            <p>This assumes you have already reverted to the live version. These commands will swap the old version back in, making it playable again.</p>
             <div class="step">
                 <h3>Run These Commands</h3>
                 <p>You must open the Windows Command Prompt <strong>as an Administrator</strong> to swap the versions.</p>
-                <pre id="backForMoreCommands">Loading commands...</pre>
-                <button onclick="copyToClipboard('backForMoreCommands')">Copy Commands</button>
+                <div class="command-block">
+                    <label>Command 1: Rename Live Game</label>
+                    <pre id="backForMoreCommands_Cmd1">Loading...</pre>
+                    <button onclick="copyToClipboard('backForMoreCommands_Cmd1')">Copy</button>
+                </div>
+                <div class="command-block">
+                    <label>Command 2: Re-activate Downgrade</label>
+                    <pre id="backForMoreCommands_Cmd2">Loading...</pre>
+                    <button onclick="copyToClipboard('backForMoreCommands_Cmd2')">Copy</button>
+                </div>
             </div>
         </div>
     </div>
@@ -278,7 +318,9 @@
 
     <script>
         const commonPath = "C:\\Program Files (x86)\\Steam\\steamapps\\common";
-        const contentPath = "C:\\Program Files (x86)\\Steam\\steamapps\\content\\app_581320";
+        const contentPath = "C:\\Program Files (x86)\\Steam\\steamapps\\content";
+        const appPath = contentPath + "\\app_581320";
+
         const modal = {
             backdrop: document.getElementById('customModal'),
             title: document.getElementById('modalTitle'),
@@ -326,9 +368,9 @@
         function copyToClipboard(elementId, silent = false) {
             const textToCopy = document.getElementById(elementId).textContent;
             navigator.clipboard.writeText(textToCopy).then(() => {
-                if (!silent) showModal({ title: "Copied!", message: "Commands copied to clipboard!", type: 'alert' });
+                if (!silent) showModal({ title: "Copied!", message: "Command copied to clipboard!", type: 'alert' });
             }, () => {
-                if (!silent) showModal({ title: "Error", message: "Failed to copy. Please copy the commands manually.", type: 'alert' });
+                if (!silent) showModal({ title: "Error", message: "Failed to copy. Please copy the command manually.", type: 'alert' });
             });
         }
 
@@ -346,39 +388,36 @@
 
         function generateCommands_A() {
             const newPath = document.getElementById('newPath_A').value.trim();
-            const outputEl1 = document.getElementById('generatedCommands_A_Part1');
-            const outputEl2 = document.getElementById('generatedCommands_A_Part2');
+            const el = {
+                p1c1: document.getElementById('generatedCommands_A_Part1_Cmd1'),
+                p1c2: document.getElementById('generatedCommands_A_Part1_Cmd2'),
+                p2c1: document.getElementById('generatedCommands_A_Part2_Cmd1'),
+                p2c2: document.getElementById('generatedCommands_A_Part2_Cmd2')
+            };
             if (!newPath) {
-                const msg = 'Enter a new path above to generate commands...';
-                outputEl1.textContent = msg;
-                outputEl2.textContent = msg;
+                const msg = 'Enter a new path above...';
+                Object.values(el).forEach(element => element.textContent = msg);
                 return;
             }
-            outputEl1.textContent = `mklink /J "${contentPath}\\depot_581322" "${newPath}"`;
-            const command1_Part2 = `rename "${commonPath}\\sandstorm" "Sandstorm_Live"`;
-            const command2_Part2 = `mklink /J "${commonPath}\\sandstorm" "${newPath}"`;
-            outputEl2.textContent = `${command1_Part2}\n\n${command2_Part2}`;
+            el.p1c1.textContent = `mkdir "${appPath}"`;
+            el.p1c2.textContent = `mklink /J "${appPath}\\depot_581322" "${newPath}"`;
+            el.p2c1.textContent = `rename "${commonPath}\\sandstorm" "Sandstorm_Live"`;
+            el.p2c2.textContent = `mklink /J "${commonPath}\\sandstorm" "${newPath}"`;
         }
 
         function generateCommands_B() {
-            const outputEl = document.getElementById('generatedCommands_B');
-            const command1 = `rename "${commonPath}\\sandstorm" "Sandstorm_Live"`;
-            const command2 = `mklink /J "${commonPath}\\sandstorm" "${contentPath}\\depot_581322"`;
-            outputEl.textContent = `${command1}\n\n${command2}`;
+            document.getElementById('generatedCommands_B_Cmd1').textContent = `rename "${commonPath}\\sandstorm" "Sandstorm_Live"`;
+            document.getElementById('generatedCommands_B_Cmd2').textContent = `mklink /J "${commonPath}\\sandstorm" "${appPath}\\depot_581322"`;
         }
 
         function generateRevertCommands() {
-            const outputEl = document.getElementById('revertCommands');
-            const command1 = `rename "${commonPath}\\sandstorm" "sandstorm_downgrade_inactive"`;
-            const command2 = `rename "${commonPath}\\Sandstorm_Live" "sandstorm"`;
-            outputEl.textContent = `${command1}\n\n${command2}`;
+            document.getElementById('revertCommands_Cmd1').textContent = `rename "${commonPath}\\sandstorm" "sandstorm_downgrade_inactive"`;
+            document.getElementById('revertCommands_Cmd2').textContent = `rename "${commonPath}\\Sandstorm_Live" "sandstorm"`;
         }
 
         function generateBackForMoreCommands() {
-            const outputEl = document.getElementById('backForMoreCommands');
-            const command1 = `rename "${commonPath}\\sandstorm" "Sandstorm_Live"`;
-            const command2 = `rename "${commonPath}\\sandstorm_downgrade_inactive" "sandstorm"`;
-            outputEl.textContent = `${command1}\n\n${command2}`;
+            document.getElementById('backForMoreCommands_Cmd1').textContent = `rename "${commonPath}\\sandstorm" "Sandstorm_Live"`;
+            document.getElementById('backForMoreCommands_Cmd2').textContent = `rename "${commonPath}\\sandstorm_downgrade_inactive" "sandstorm"`;
         }
     </script>
 </body>
