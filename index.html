@@ -3,422 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Insurgency Sandstorm Version Downloader</title>
+    <title>The New Insurgency: Sandstorm Downgrader</title>
     <style>
+        /* --- Basic Setup --- */
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6; margin: 0; padding: 20px;
-            background-color: #f8f9fa; color: #343a40;
+            line-height: 1.7;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
         }
-        .container {
-            max-width: 800px; margin: 0 auto; background-color: #fff;
-            padding: 25px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-        }
-        h1, h2, h3 { text-align: center; color: #212529; }
-        label { display: block; margin-bottom: 5px; font-weight: 600; }
-        select, input[type="text"] {
-            width: 100%; padding: 10px; font-size: 16px; border-radius: 5px;
-            border: 1px solid #ced4da; box-sizing: border-box; margin-bottom: 15px;
-        }
-        button {
-            display: inline-block; padding: 12px 20px; font-size: 16px; font-weight: bold;
-            margin-top: 10px; background-color: #007bff; color: white; border: none;
-            cursor: pointer; border-radius: 5px; margin-right: 10px; transition: background-color 0.2s;
-        }
-        button.secondary { background-color: #6c757d; }
-        button.success { background-color: #28a745; }
-        button.info { background-color: #17a2b8; }
-        button.warning { background-color: #ffc107; color: #212529; }
-        button:hover { opacity: 0.85; }
 
-        .command-area, .helper-area {
-            margin-top: 20px; padding: 20px; display: none; border: 1px solid #e0e0e0;
-            border-radius: 8px; background-color: #fdfdfd;
+        /* --- Main Content Container --- */
+        .container {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            max-width: 600px;
+            width: 100%;
         }
-        #downloadCommand {
-            font-family: 'Courier New', Courier, monospace; background-color: #e9ecef; padding: 15px;
-            border: 1px solid #ced4da; border-radius: 5px; white-space: pre-wrap; word-wrap: break-word;
+
+        /* --- Typography --- */
+        h1 {
+            font-size: 2.2em;
+            color: #212529;
+            margin-bottom: 10px;
         }
-        .method-choice { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; }
-        pre {
-            background-color: #212529; color: #f8f9fa; padding: 15px; border-radius: 5px;
-            white-space: pre-wrap; word-wrap: break-word; font-family: 'Courier New', Courier, monospace;
-            margin-top: 5px; margin-bottom: 10px;
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #6c757d;
+            margin-bottom: 30px;
         }
-        .step { margin-bottom: 25px; }
-        .step p { font-size: 0.9em; color: #6c757d; margin-top: 0; }
-        .command-block { margin-bottom: 20px; }
         
-        /* Modal Styles */
-        .modal-backdrop {
-            display: none; position: fixed; z-index: 1000; left: 0; top: 0;
-            width: 100%; height: 100%; background-color: rgba(0,0,0,0.6);
-            justify-content: center; align-items: center;
+        h2 {
+            font-size: 1.5em;
+            color: #343a40;
+            margin-top: 40px;
+            border-top: 1px solid #e9ecef;
+            padding-top: 30px;
         }
-        .modal-content {
-            background-color: #fff; padding: 20px 30px; border-radius: 8px;
-            width: 90%; max-width: 500px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); text-align: center;
+
+        /* --- Feature List --- */
+        .features {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0 40px 0;
+            text-align: left;
+            display: inline-block;
         }
-        .modal-buttons { margin-top: 20px; }
+
+        .features li {
+            margin-bottom: 12px;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+        }
+        
+        .features li::before {
+            content: '✅';
+            margin-right: 12px;
+            font-size: 1.2em;
+        }
+
+        /* --- Buttons and Links --- */
+        .download-button {
+            display: inline-block;
+            background-color: #28a745;
+            color: #fff;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.2s, transform 0.2s;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.2);
+        }
+
+        .download-button:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+
+        .github-link {
+            display: block;
+            margin-top: 25px;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .github-link:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8em; }
+            .subtitle { font-size: 1em; }
+            .container { padding: 30px 20px; }
+        }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <h1>Insurgency: Sandstorm Version Downloader</h1>
+        <h1>A Better Way to Downgrade</h1>
+        <p class="subtitle">This website is now an archive. An easier, automated desktop app has replaced it!</p>
 
-        <div class="step">
-            <label for="versionSelect">Step 1: Select Your Desired Game Version</label>
-            <select id="versionSelect">
-                 <!-- All version options -->
-                 <option value="711852640520621954">1.14</option>
-                 <option value="3458666526935884805">1.13.Hotfix</option>
-                 <option value="8092396578978848794">1.13</option>
-                 <option value="5986464693732242887">1.12.Hotfix2</option>
-                 <option value="4871146283128373881">1.12.Hotfix1</option>
-                 <option value="6829171027828238491">1.12</option>
-                 <option value="4533143795067422411">1.11.Hotfix6</option>
-                 <option value="4399216738472684023">1.11.Hotfix5</option>
-                 <option value="7382926159525707633">1.11.Hotfix4</option>
-                 <option value="187196897474210673">1.11.Hotfix3</option>
-                 <option value="7439114860999596478">1.11.Hotfix2</option>
-                 <option value="8844119457875109523">1.11.Hotfix1</option>
-                 <option value="7012079460285536988">1.11</option>
-                 <option value="2006881810008027571">1.10.Hotfix6</option>
-                 <option value="214177622852644981">1.10.Hotfix5</option>
-                 <option value="1045813576702319803">1.10.Hotfix4</option>
-                 <option value="7325052389182588217">1.10.Hotfix3</option>
-                 <option value="303952586483603080">1.10.Hotfix2.5</option>
-                 <option value="2450329360460312166">1.10.Hotfix2</option>
-                 <option value="6485000026124667854">1.10.Hotfix1</option>
-                 <option value="3243532880257426731">1.10</option>
-                 <option value="1088025155821945216">1.9.2.Hotfix2</option>
-                 <option value="9086410089138469140">1.9.2.Hotfix1</option>
-                 <option value="8334976934954086030">1.9.2</option>
-                 <option value="7584863291271290147">1.9.1.Hotfix4</option>
-                 <option value="2729083608456298822">1.9.1.Hotfix3</option>
-                 <option value="1775289740822761452">1.9.1.Hotfix2.5</option>
-                 <option value="4914610732870329398">1.9.1.Hotfix2</option>
-                 <option value="6670957732884402247">1.9.1.Hotfix1</option>
-                 <option value="5726941608789056878">1.9.1</option>
-                 <option value="6463337868987152237">1.9.Hotfix6</option>
-                 <option value="2877788480249548103">1.9.Hotfix5</option>
-                 <option value="3707872763158257990">1.9.Hotfix4</option>
-                 <option value="5903502488140004374">1.9.Hotfix3</option>
-                 <option value="9025549973775273709">1.9.Hotfix2</option>
-                 <option value="1713003361944811328">1.9.Hotfix1</option>
-                 <option value="6264937784337881272">1.9</option>
-                 <option value="787582876162366074">1.8.1</option>
-                 <option value="4109103438259507398">1.8.Hotfix4</option>
-                 <option value="8519301017775042659">1.8.Hotfix3</option>
-                 <option value="5536306406543471367">1.8.Hotfix2</option>
-                 <option value="9201705553858300830">1.8.Hotfix1</option>
-                 <option value="2723660525937518784">1.8</option>
-                 <option value="710459789755486682">1.7.1Hotfix2</option>
-                 <option value="1133192030284822537">1.7.1.Hotfix1</option>
-                 <option value="1978372929896113254">1.7.1</option>
-                 <option value="5196214492480799100">1.7.Hotfix5</option>
-                 <option value="8551810919919402267">1.7.Hotfix4</option>
-                 <option value="6863766911579724490">1.7.Hotfix3</option>
-                 <option value="7955879386472886167">1.7.Hotfix2</option>
-                 <option value="3012192512914207454">1.7.Hotfix1</option>
-                 <option value="454998146682676571">1.7</option>
-                 <option value="4266804895388485623">1.6.3</option>
-                 <option value="7287445481278679392">1.6.2</option>
-                 <option value="2034095608314520563">1.6.1.Hotfix</option>
-                 <option value="3921927152262922604">1.6.1</option>
-                 <option value="7847845268283935790">1.6.Hotfix2</option>
-                 <option value="2761663070421646425">1.6.Hotfix1</option>
-                 <option value="6572115972218114923">1.6</option>
-                 <option value="852780598066674912">1.5.Hotfix5</option>
-                 <option value="2511179348630256170">1.5.Hotfix4</option>
-                 <option value="232934329978532664">1.5.Hotfix3</option>
-                 <option value="1835978315453844649">1.5.Hotfix2</option>
-                 <option value="1648777534570350320">1.5.Hotfix1</option>
-                 <option value="7388630325061410720">1.5</option>
-                 <option value="2269144251291045229">1.4.2.Hotfix3</option>
-                 <option value="124039388153563814">1.4.2.Hotfix1</option>
-                 <option value="7516375773592346679">1.4.2.Hotfix</option>
-                 <option value="3176769886884186040">1.4.2</option>
-                 <option value="7362143051755135924">1.4.1</option>
-                 <option value="6181860716510471882">1.4.Hotfix3</option>
-                 <option value="2926158819493651599">1.4.Hotfix2</option>
-                 <option value="6036042970382503178">1.4.Hotfix1</option>
-                 <option value="1323034449099701970">1.4</option>
-                 <option value="784569742911593091">1.3.2</option>
-                 <option value="1522554223434535602">1.3.Hotfix9</option>
-                 <option value="7601179095701261530">1.3.Hotfix8</option>
-                 <option value="6713801361500850308">1.3.Hotfix7</option>
-                 <option value="506999290891349986">1.3.Hotfix6</option>
-                 <option value="7921442344668730597">1.3.Hotfix5</option>
-                 <option value="2148521915067304173">1.3.Hotfix4</option>
-                 <option value="6308999349504179373">1.3.Hotfix3</option>
-                 <option value="8128108979843632926">1.3.Hotfix2</option>
-                 <option value="9054620642247097560">1.3.Hotfix1</option>
-                 <option value="2331825406693558379">1.3</option>
-                 <option value="6403852170718626390">1.2.Hotfix4</option>
-                 <option value="7438549529557820477">1.2.Hotfix3</option>
-                 <option value="6981138844248411630">1.2.Hotfix2</option>
-                 <option value="6416001038180394959">1.2.Hotfix1</option>
-                 <option value="7595476231582786872">1.2</option>
-                 <option value="7657420739371707334">1.1.4.Hotfix</option>
-                 <option value="4177236473352632638">1.1.4</option>
-                 <option value="3215773350402364230">1.1.3</option>
-                 <option value="6688149793229305402">1.1.2</option>
-                 <option value="6705546614430059198">1.1.1</option>
-                 <option value="2896223945223913834">1.1.0.1</option>
-                 <option value="8732291446976397467">1.1</option>
-                 <option value="6685654127200965218">1.0.2</option>
-                 <option value="5484915775999956526">1.0.1</option>
-                 <option value="5274979863881698948">1.0.0</option>
-                 <option value="3351122470364503446">FreeOpenBeta1Hotfix2</option>
-                 <option value="6425999330048805122">FreeOpenBeta1Hotfix1</option>
-                 <option value="8847845026571887103">FreeOpenBeta1</option>
-                 <option value="5546620330035867890">PreFreeOpenBeta?</option>
-            </select>
-        </div>
-        <div class="step">
-            <label>Step 2: Get Download Command</label>
-             <button onclick="prepareDownload()">Generate & Copy Command</button>
-             <button onclick="openSteamConsole()">Open Steam Console</button>
-        </div>
-       
-        <div id="commandArea" class="command-area">
-            <h3>Download Command Ready!</h3>
-            <p>The command has been copied to your clipboard. Paste it into the Steam Console and press Enter.</p>
-            <p id="downloadCommand"></p>
-        </div>
+        <a href="https://github.com/extremelystiff/InsurgencySandstormDowngrader/releases/latest/download/Advanced.Sandstorm.Downgrader.exe" class="download-button">
+            Download the New Tool
+        </a>
         
-        <div class="method-choice">
-            <h2>Step 3: Make The Old Version Playable</h2>
-            <p style="max-width: 600px; margin: auto; color: #6c757d;">After your download finishes, choose the guide that fits what you did.</p>
-            <button class="info" onclick="showHelper('faqArea')">Wait, why are these steps necessary?</button>
-            <br>
-            <button class="secondary" onclick="showHelper('helper_PreDownload')">Method A: For downloading to another drive (e.g., D:)</button>
-            <button class="secondary" onclick="showHelper('helper_PostDownload')">Method B: For using the default C: drive location</button>
-            <hr style="border:0; border-top: 1px solid #eee; margin: 20px;">
-             <button class="success" onclick="showHelper('revertArea')">Done? Restore the Latest Version</button>
-             <button class="warning" onclick="showHelper('backForMoreArea')">Back for More? Re-activate Old Version</button>
-        </div>
+        <h2>Why Use the New App?</h2>
+        <ul class="features">
+            <li>Say goodbye to Command Prompts.</li>
+            <li>Automatically finds your game files.</li>
+            <li>Manages all your downloaded versions.</li>
+            <li>Launch any version with one click.</li>
+            <li>Restores your live game when you're done.</li>
+        </ul>
 
-        <!-- All Helper Areas -->
-        <div id="faqArea" class="helper-area">
-            <h2>Why This Works</h2>
-            <p>Steam only launches Sandstorm if it's in a folder named exactly `sandstorm` inside its `.../steamapps/common/` directory.</p>
-            <ol>
-                <li><strong>We rename your current, up-to-date game folder</strong> to `Sandstorm_Live`. This keeps it safe and gets it out of the way.</li>
-                <li><strong>We make the old version appear in the right spot.</strong> We use a "Junction Link", a powerful Windows shortcut that tells your PC: "When a program looks for Folder A, secretly redirect it to Folder B."</li>
-            </ol>
-            <p>This tricks Steam into launching the old version perfectly. The "Revert" and "Re-activate" scripts simply swap which version is active.</p>
-        </div>
-
-        <div id="helper_PreDownload" class="helper-area">
-            <h2>Method A: Set Up Another Drive Before Downloading</h2>
-            <div class="step">
-                <label for="newPath_A">Enter the full path for your new folder</label>
-                <p>This is where the old game version will actually be stored. Example: <strong>D:\Games\Sandstorm_v1.14</strong></p>
-                <input type="text" id="newPath_A" placeholder="e.g., D:\Games\Sandstorm_v1.14" oninput="generateCommands_A()">
-            </div>
-            <div class="step">
-                <h3>Part 1: BEFORE You Download</h3>
-                <p>You must open the Windows Command Prompt <strong>as an Administrator</strong> and run these commands one by one.</p>
-                <div class="command-block">
-                    <label>Command 1: Create Parent Folder</label>
-                    <pre id="generatedCommands_A_Part1_Cmd1">Enter a new path above...</pre>
-                    <button onclick="copyToClipboard('generatedCommands_A_Part1_Cmd1')">Copy</button>
-                </div>
-                <div class="command-block">
-                    <label>Command 2: Link Download Folder</label>
-                    <pre id="generatedCommands_A_Part1_Cmd2">Enter a new path above...</pre>
-                    <button onclick="copyToClipboard('generatedCommands_A_Part1_Cmd2')">Copy</button>
-                </div>
-            </div>
-            <div class="step">
-                <h3>Part 2: AFTER You Download</h3>
-                <p>After the download is complete, open the Command Prompt <strong>as an Administrator</strong> again and run these two commands to make the files playable.</p>
-                 <div class="command-block">
-                    <label>Command 1: Rename Live Game</label>
-                    <pre id="generatedCommands_A_Part2_Cmd1">Enter a new path above...</pre>
-                    <button onclick="copyToClipboard('generatedCommands_A_Part2_Cmd1')">Copy</button>
-                </div>
-                <div class="command-block">
-                    <label>Command 2: Create Playable Link</label>
-                    <pre id="generatedCommands_A_Part2_Cmd2">Enter a new path above...</pre>
-                    <button onclick="copyToClipboard('generatedCommands_A_Part2_Cmd2')">Copy</button>
-                </div>
-            </div>
-        </div>
-
-        <div id="helper_PostDownload" class="helper-area">
-            <h2>Method B: Use Default Download Location</h2>
-             <p>Follow this if you have already downloaded to the `.../steamapps/content` folder.</p>
-            <div class="step">
-                <h3>Run These Commands</h3>
-                <p>You must open the Windows Command Prompt <strong>as an Administrator</strong> and run these commands one by one.</p>
-                <div class="command-block">
-                    <label>Command 1: Rename Live Game</label>
-                    <pre id="generatedCommands_B_Cmd1">Loading...</pre>
-                    <button onclick="copyToClipboard('generatedCommands_B_Cmd1')">Copy</button>
-                </div>
-                <div class="command-block">
-                    <label>Command 2: Link Downloaded Files</label>
-                    <pre id="generatedCommands_B_Cmd2">Loading...</pre>
-                    <button onclick="copyToClipboard('generatedCommands_B_Cmd2')">Copy</button>
-                </div>
-            </div>
-        </div>
-
-        <div id="revertArea" class="helper-area">
-            <h2>Restore Your Latest Game Version</h2>
-            <div class="step">
-                <h3>Run These Commands</h3>
-                <p>You must open the Windows Command Prompt <strong>as an Administrator</strong> to make your original game active again.</p>
-                 <div class="command-block">
-                    <label>Command 1: Deactivate Downgrade Link</label>
-                    <pre id="revertCommands_Cmd1">Loading...</pre>
-                    <button onclick="copyToClipboard('revertCommands_Cmd1')">Copy</button>
-                </div>
-                <div class="command-block">
-                    <label>Command 2: Restore Live Game</label>
-                    <pre id="revertCommands_Cmd2">Loading...</pre>
-                    <button onclick="copyToClipboard('revertCommands_Cmd2')">Copy</button>
-                </div>
-            </div>
-        </div>
-
-        <div id="backForMoreArea" class="helper-area">
-            <h2>Back for More? Re-activate the Old Version</h2>
-            <div class="step">
-                <h3>Run These Commands</h3>
-                <p>You must open the Windows Command Prompt <strong>as an Administrator</strong> to swap the versions.</p>
-                <div class="command-block">
-                    <label>Command 1: Rename Live Game</label>
-                    <pre id="backForMoreCommands_Cmd1">Loading...</pre>
-                    <button onclick="copyToClipboard('backForMoreCommands_Cmd1')">Copy</button>
-                </div>
-                <div class="command-block">
-                    <label>Command 2: Re-activate Downgrade</label>
-                    <pre id="backForMoreCommands_Cmd2">Loading...</pre>
-                    <button onclick="copyToClipboard('backForMoreCommands_Cmd2')">Copy</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Custom Modal Structure -->
-    <div id="customModal" class="modal-backdrop">
-        <div class="modal-content">
-            <h3 id="modalTitle">Modal Title</h3>
-            <p id="modalMessage">Modal message goes here.</p>
-            <div class="modal-buttons">
-                <button id="modalConfirmBtn" class="success">OK</button>
-                <button id="modalCancelBtn" class="secondary">Cancel</button>
-            </div>
-        </div>
+        <a href="https://github.com/extremelystiff/InsurgencySandstormDowngrader" class="github-link" target="_blank" rel="noopener noreferrer">
+            It's Open Source! View the Code on GitHub
+        </a>
     </div>
 
-    <script>
-        const commonPath = "C:\\Program Files (x86)\\Steam\\steamapps\\common";
-        const contentPath = "C:\\Program Files (x86)\\Steam\\steamapps\\content";
-        const appPath = contentPath + "\\app_581320";
-
-        const modal = {
-            backdrop: document.getElementById('customModal'),
-            title: document.getElementById('modalTitle'),
-            message: document.getElementById('modalMessage'),
-            confirmBtn: document.getElementById('modalConfirmBtn'),
-            cancelBtn: document.getElementById('modalCancelBtn')
-        };
-
-        function showModal(config) {
-            modal.title.textContent = config.title;
-            modal.message.innerHTML = config.message;
-            modal.confirmBtn.onclick = () => {
-                modal.backdrop.style.display = 'none';
-                if (config.onConfirm) config.onConfirm();
-            };
-            if (config.type === 'confirm') {
-                modal.cancelBtn.style.display = 'inline-block';
-                modal.cancelBtn.onclick = () => {
-                    modal.backdrop.style.display = 'none';
-                    if (config.onCancel) config.onCancel();
-                };
-            } else {
-                modal.cancelBtn.style.display = 'none';
-            }
-            modal.backdrop.style.display = 'flex';
-        }
-
-        function prepareDownload() {
-            const confirmationMessage = "The game files are large and will download to your C: drive by default.<br><br><strong>Click OK</strong> if you have enough space on your C: drive.<br><br><strong>Click Cancel</strong> if you need to use another drive and follow Method A below <em>before</em> downloading.";
-            showModal({ title: "Heads Up!", message: confirmationMessage, type: 'confirm', onConfirm: proceedWithDownload });
-        }
-        
-        function proceedWithDownload() {
-            const manifestId = document.getElementById('versionSelect').value;
-            const downloadCommand = `download_depot 581320 581322 ${manifestId}`;
-            const cmdArea = document.getElementById('commandArea');
-            cmdArea.style.display = 'block';
-            document.getElementById('downloadCommand').textContent = downloadCommand;
-            copyToClipboard('downloadCommand', true);
-            showModal({ title: "Success!", message: "Download command has been generated and copied to your clipboard!", type: 'alert' });
-        }
-
-        function openSteamConsole() { window.location.href = 'steam://nav/console'; }
-
-        function copyToClipboard(elementId, silent = false) {
-            const textToCopy = document.getElementById(elementId).textContent;
-            navigator.clipboard.writeText(textToCopy).then(() => {
-                if (!silent) showModal({ title: "Copied!", message: "Command copied to clipboard!", type: 'alert' });
-            }, () => {
-                if (!silent) showModal({ title: "Error", message: "Failed to copy. Please copy the command manually.", type: 'alert' });
-            });
-        }
-
-        function showHelper(helperId) {
-            ['faqArea', 'helper_PreDownload', 'helper_PostDownload', 'revertArea', 'backForMoreArea'].forEach(id => {
-                document.getElementById(id).style.display = 'none';
-            });
-            document.getElementById(helperId).style.display = 'block';
-            // Pre-generate commands when a section is opened
-            if (helperId === 'helper_PreDownload') generateCommands_A();
-            if (helperId === 'helper_PostDownload') generateCommands_B();
-            if (helperId === 'revertArea') generateRevertCommands();
-            if (helperId === 'backForMoreArea') generateBackForMoreCommands();
-        }
-
-        function generateCommands_A() {
-            const newPath = document.getElementById('newPath_A').value.trim();
-            const el = {
-                p1c1: document.getElementById('generatedCommands_A_Part1_Cmd1'),
-                p1c2: document.getElementById('generatedCommands_A_Part1_Cmd2'),
-                p2c1: document.getElementById('generatedCommands_A_Part2_Cmd1'),
-                p2c2: document.getElementById('generatedCommands_A_Part2_Cmd2')
-            };
-            if (!newPath) {
-                const msg = 'Enter a new path above...';
-                Object.values(el).forEach(element => element.textContent = msg);
-                return;
-            }
-            el.p1c1.textContent = `mkdir "${appPath}"`;
-            el.p1c2.textContent = `mklink /J "${appPath}\\depot_581322" "${newPath}"`;
-            el.p2c1.textContent = `rename "${commonPath}\\sandstorm" "Sandstorm_Live"`;
-            el.p2c2.textContent = `mklink /J "${commonPath}\\sandstorm" "${newPath}"`;
-        }
-
-        function generateCommands_B() {
-            document.getElementById('generatedCommands_B_Cmd1').textContent = `rename "${commonPath}\\sandstorm" "Sandstorm_Live"`;
-            document.getElementById('generatedCommands_B_Cmd2').textContent = `mklink /J "${commonPath}\\sandstorm" "${appPath}\\depot_581322"`;
-        }
-
-        function generateRevertCommands() {
-            document.getElementById('revertCommands_Cmd1').textContent = `rename "${commonPath}\\sandstorm" "sandstorm_downgrade_inactive"`;
-            document.getElementById('revertCommands_Cmd2').textContent = `rename "${commonPath}\\Sandstorm_Live" "sandstorm"`;
-        }
-
-        function generateBackForMoreCommands() {
-            document.getElementById('backForMoreCommands_Cmd1').textContent = `rename "${commonPath}\\sandstorm" "Sandstorm_Live"`;
-            document.getElementById('backForMoreCommands_Cmd2').textContent = `rename "${commonPath}\\sandstorm_downgrade_inactive" "sandstorm"`;
-        }
-    </script>
 </body>
 </html>
