@@ -1,7 +1,8 @@
 <a href="https://github.com/extremelystiff/InsurgencySandstormDowngrader/releases/download/V1.0/Advanced.Sandstorm.Downgrader.1.0.0.exe">
   <button>Download Downgrader v1.0.0</button>
-</a
-<img width="979" height="1189" alt="image" src="https://github.com/user-attachments/assets/2c4b1f58-8b17-486f-9bec-d5f7a10ec241" />
+</a>
+<img width="974" height="1179" alt="image" src="https://github.com/user-attachments/assets/16c942c8-551c-4aa8-a4f1-e5dc1cfa8ce7" />
+
 
 Downgrade sandstorm with a couple clicks!
 
