@@ -1,5 +1,5 @@
 **Download the program:**
-[Advanced.Sandstorm.Downgrader.1.0.0.exe](https://github.com/extremelystiff/InsurgencySandstormDowngrader/releases/download/V1.0/Advanced.Sandstorm.Downgrader.1.0.0.exe)
+[Advanced.Sandstorm.Downgrader.1.1.0.exe](https://github.com/extremelystiff/InsurgencySandstormDowngrader/releases/download/v1.1/Advanced.Sandstorm.Downgrader.1.1.0.exe)
 Its portable!
 
 <img width="974" height="1179" alt="image" src="https://github.com/user-attachments/assets/16c942c8-551c-4aa8-a4f1-e5dc1cfa8ce7" />
